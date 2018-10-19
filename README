@@ -1,0 +1,22 @@
+# install virtualenv and carla requirements
+wget https://github.com/pypa/virtualenv/archive/16.0.0.tar.gz
+tar -xzf 16.0.0.tar.gz
+python virtualenv-16.0.0/virtualenv.py venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+
+# start example client
+python manual_control.py --verbose --host 130.233.193.98 --port 20000
+
+
+# gather cpu metrics
+# check: man mpstat
+# to get details on metrics
+python recv_cpu_perf.py
+
+
+# gather gpu metrics
+# check: man nvidia-smi
+# to get details on metrics
+python recv_gpu_perf.py
